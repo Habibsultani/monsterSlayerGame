@@ -11,6 +11,7 @@ const app = Vue.createApp({
       playerHeal: 100,
       currentRound: 0,
       message: null,
+      buttuleLog: [],
     };
   },
 
@@ -60,16 +61,20 @@ const app = Vue.createApp({
       const hurtValueM = calculateHurtValue(12, 5);
       this.monasterHeal -= hurtValueM;
       this.playerAttack();
+      this.buttuleLog.push(`Player attaked and deal ${hurtValueM}`);
     },
     playerAttack() {
       const hurtValueP = calculateHurtValue(18, 8);
       this.playerHeal -= hurtValueP;
+      this.buttuleLog.push(`Monster attaked and deal ${hurtValueP}`);
     },
 
     specialAttackM() {
       this.currentRound++;
       const spHurtVal = calculateHurtValue(25, 9);
       this.monasterHeal -= spHurtVal;
+      this.buttuleLog.push(`Player attaked and deal ${spHurtVal}`);
+
       this.playerAttack();
     },
 
@@ -80,6 +85,7 @@ const app = Vue.createApp({
         this.playerHeal = 100;
       } else {
         this.playerHeal += healvalue;
+        this.buttuleLog.push(`Player healed  ${healvalue}`);
       }
       this.monisterAttack();
     },
