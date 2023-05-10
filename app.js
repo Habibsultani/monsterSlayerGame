@@ -95,10 +95,12 @@ const app = Vue.createApp({
       this.playerHeal = 100;
       this.currentRound = 0;
       this.message = null;
+      this.buttuleLog.length = 0;
     },
 
     surenderButton() {
       this.message = "Player";
+      this.buttuleLog.length = 0;
     },
   },
 });
